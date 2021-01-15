@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Identity Matrix</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>Identity Matrix</div>
+        <label>input  "N": </label>
+        <input type="number" name="" autofocus placeholder="write a number" id ="N" ><br><br>
+        <button type="button" onclick="GenerateMatrix();">GenerateMatrix</button>
+
+        <script type="text/javascript" >
+            function GenerateMatrix() {
+                // Obtener la referencia del elemento body
+                 var Nn = parseFloat(document.getElementById("N").value) || 0;       
+        var body = document.getElementsByTagName("body")[0];
+                // Crea un elemento <table> y un elemento <tbody>
+                var tabla = document.createElement("table");
+                var tblBody = document.createElement("tbody");
+                // Crea las celdas
+                for (var i = 0; i <Nn; i++) {
+                    // Crea las hileras de la tabla
+                    var hilera = document.createElement("tr");
+                    for (var j = 0; j < Nn; j++) {
+                        // Crea un elemento <td> y un nodo de texto, haz que el nodo de
+                        // texto sea el contenido de <td>, ubica el elemento <td> al final
+                        // de la hilera de la tabla
+                        var celda = document.createElement("td");
+                        if(i==j){
+                            var textoCelda = document.createTextNode(1);
+                        }else{
+                            var textoCelda = document.createTextNode(0);
+                        }                      
+                        celda.appendChild(textoCelda);
+                        hilera.appendChild(celda);
+                    }
+                    // agrega la hilera al final de la tabla (al final del elemento tblbody)
+                    tblBody.appendChild(hilera);
+                }
+                // posiciona el <tbody> debajo del elemento <table>
+                tabla.appendChild(tblBody);
+                // appends <table> into <body>
+                body.appendChild(tabla);
+                // modifica el atributo "border" de la tabla y lo fija a "2";
+                tabla.setAttribute("border", "2");
+            }
+        </script>
+    </body>
+</html>
